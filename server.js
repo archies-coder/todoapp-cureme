@@ -2,14 +2,29 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+const { connectToDB } = require('./app/config/db')
+// eslint-disable-next-line prettier/prettier
 const { PORT, serverRunningCallBack } = require('./app/config/config')
 
-// Express App
-const app = express()
+const start = async () => {
+  try {
+    await connectToDB()
+  } catch (error) {
+    console.error('Unable to connect to the database:', error)
+  }
 
-// Body Parser
-app.use(bodyParser.json())
-// CORS
-app.use(cors())
+  try {
+    // Express App
+    const app = await express()
+    // Body Parser
+    app.use(bodyParser.json())
+    // CORS
+    app.use(cors())
 
-app.listen(PORT, serverRunningCallBack)
+    await app.listen(PORT, serverRunningCallBack)
+  } catch (error) {
+    console.log(error)
+    process.exit(1)
+  }
+}
+start()
