@@ -18,5 +18,10 @@ export const todoList = [
         id: 4,
         todo: "code everything",
         completed: true
+    },
+    {
+        id: 7,
+        todo: 'finish register page',
+        completed: false
     }
 ]
