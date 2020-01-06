@@ -13,5 +13,10 @@ export const todoList = [
         id: 3,
         todo: "watch movie",
         completed: false
+    },
+    {
+        id: 4,
+        todo: "code everything",
+        completed: true
     }
 ]

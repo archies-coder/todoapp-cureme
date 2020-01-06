@@ -16,7 +16,7 @@ export default class TodoItem extends Component {
         return (
         <li>
             <input type="checkbox" name="setTodo" onChange={this.handleChange}/>
-            <span>{this.props.item.todo}</span>
+            <span>{this.props.item.todo} Hello</span>
         </li>
         )
     }
